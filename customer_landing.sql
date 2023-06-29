@@ -4,8 +4,8 @@ CREATE EXTERNAL TABLE IF NOT EXISTS customer_landing (
   phone STRING,
   birthDay STRING,
   serialNumber STRING,
-  registrationDate BIGINT,
-  lastUpdateDate BIGINT,
+  registrationDate STRING,
+  lastUpdateDate STRING,
   shareWithResearchAsOfDate BIGINT,
   shareWithPublicAsOfDate BIGINT
 )
