@@ -1,10 +1,17 @@
-CREATE EXTERNAL TABLE hoanghai_database.accelerometer_landing (
-  user string,
-  timestamp bigint,
-  x float,
-  y float,
-  z float
+CREATE EXTERNAL TABLE IF NOT EXISTS `hoanghai_database`.`accelerometer_landing` (
+  `user` string,
+  `timeStamp` bigint,
+  `x` float,
+  `y` float,
+  `z` float
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
-WITH SERDEPROPERTIES ('classification'='json')
+WITH SERDEPROPERTIES (
+  'ignore.malformed.json' = 'FALSE',
+  'dots.in.keys' = 'FALSE',
+  'case.insensitive' = 'TRUE',
+  'mapping' = 'TRUE'
+)
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION 's3://hainguyen/accelerometer/landing/'
+TBLPROPERTIES ('classification' = 'json');
