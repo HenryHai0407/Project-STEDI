@@ -1,16 +1,21 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS customer_landing (
-  customerName STRING,
-  email STRING,
-  phone STRING,
-  birthDay STRING,
-  serialNumber STRING,
-  registrationDate STRING,
-  lastUpdateDate STRING,
-  shareWithResearchAsOfDate BIGINT,
-  shareWithPublicAsOfDate BIGINT
+CREATE EXTERNAL TABLE IF NOT EXISTS `hoanghai_database`.`customer_landing` (
+  `customerName` string,
+  `email` string,
+  `phone` string,
+  `birthDay` string,
+  `serialNumber` string,
+  `registrationDate` bigint,
+  `lastUpdateDate` bigint,
+  `shareWithResearchAsOfDate` bigint,
+  `shareWithPublicAsOfDate` bigint
 )
 ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 WITH SERDEPROPERTIES (
-  'serialization.format' = '1'
+  'ignore.malformed.json' = 'FALSE',
+  'dots.in.keys' = 'FALSE',
+  'case.insensitive' = 'TRUE',
+  'mapping' = 'TRUE'
 )
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION 's3://hainguyen/customer/landing/'
+TBLPROPERTIES ('classification' = 'json');
