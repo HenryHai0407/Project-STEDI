@@ -6,7 +6,7 @@ customer
 step_trainer
 accelerometer
 
-1. Customer Records
+### 1. Customer Records
 This is the data from fulfillment and the STEDI website.
 
 AWS S3 Bucket URI - s3://cd0030bucket/customers/
@@ -23,7 +23,7 @@ lastupdatedate
 phone
 sharewithfriendsasofdate
 
-2. Step Trainer Records
+### 2. Step Trainer Records
 This is the data from the motion sensor.
 AWS S3 Bucket URI - s3://cd0030bucket/step_trainer/
 contains the following fields:
@@ -32,7 +32,7 @@ sensorReadingTime
 serialNumber
 distanceFromObject
 
-3. Accelerometer Records
+### 3. Accelerometer Records
 This is the data from the mobile app.
 AWS S3 Bucket URI - s3://cd0030bucket/accelerometer/
 contains the following fields:
@@ -43,7 +43,8 @@ x
 y
 z
 
-Project Instructions
+## Project Instructions
+
 Using AWS Glue, AWS S3, Python, and Spark, create or generate Python scripts to build a lakehouse solution in AWS that satisfies these requirements from the STEDI data scientists.
 
 Refer to the flowchart below to better understand the workflow.
